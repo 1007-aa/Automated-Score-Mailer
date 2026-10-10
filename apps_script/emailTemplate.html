@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .header {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .score-table th,
+        .score-table td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .score-table th {
+            background-color: #f2f2f2;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0073E6;
+        }
+
+        .chart-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #eeeeee;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #777777;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Performance Report:
+                <?= testName ?>
+            </h2>
+            <p><strong>Student Name:</strong>
+                <?= studentName ?><br>
+                <strong>Roll No:</strong>
+                <?= rollNo ?><br>
+                <strong>Class Rank:</strong> <span class="highlight">
+                    <?= rankSuffix ?>
+                </span>
+            </p>
+        </div>
+
+        <p>Dear Parent,</p>
+        <p>Please find below the performance summary for your child in the recent test.</p>
+
+        <table class="score-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Student Marks</th>
+                    <th>Class Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Physics</td>
+                    <td>
+                        <?= marks.Physics ?>
+                    </td>
+                    <td>
+                        <?= classAverages.Physics ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Chemistry</td>
+                    <td>
+                        <?= marks.Chemistry ?>
+                    </td>
+                    <td>
+                        <?= classAverages.Chemistry ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Maths</td>
+                    <td>
+                        <?= marks.Maths ?>
+                    </td>
+                    <td>
+                        <?= classAverages.Maths ?>
+                    </td>
+                </tr>
+                <tr style="font-weight: bold; background-color: #f8f9fa;">
+                    <td>Total</td>
+                    <td>
+                        <?= totalMarks ?> /
+                        <?= maxTotal ?>
+                    </td>
+                    <td>
+                        <?= totalClassAverage ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="chart-container">
+            <!-- Inline Image Injection -->
+            <img src="cid:chartImage" alt="Performance Chart">
+        </div>
+
+        <p>If you have any questions regarding these results, please don't hesitate to reach out to the class teacher.
+        </p>
+
+        <div class="footer">
+            <p>This is an automated email. Please do not reply directly to this message.</p>
+        </div>
+    </div>
+</body>
+
+</html>

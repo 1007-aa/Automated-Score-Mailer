@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        color: #333333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+    .rank-badge {
+        background-color: #0073E6;
+        color: white;
+        padding: 2px 12px;
+        border-radius: 12px;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 8px;
+    }
+    .notice {
+        background-color: #FFF9E6;
+        border-left: 4px solid #FFC107;
+        padding: 10px 15px;
+        margin: 20px 0;
+        font-size: 14px;
+        color: #555;
+    }
+    .table-title {
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+    th, td {
+        border: 1px solid #DDDDDD;
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background-color: #F8F9FA;
+        font-weight: bold;
+    }
+    th:first-child, td:first-child {
+        text-align: left;
+    }
+    .total-row {
+        font-weight: bold;
+        background-color: #F8F9FA;
+    }
+    .chart-container {
+        margin: 20px 0;
+        text-align: center;
+    }
+    .footer {
+        margin-top: 40px;
+        font-size: 14px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <p>Dear Parent,</p>
+        
+        <p>Please find below <strong>{{ student_name }}</strong>'s performance in <strong>{{ test_name }}</strong> (Roll No. {{ roll_no }}).</p>
+        
+        <p><strong>Rank in class:</strong> <span class="rank-badge">{{ rank_suffix }}</span></p>
+        
+        <div class="notice">
+            <strong>Please note:</strong> The marks shown below are based on the <strong>corrected answer key</strong>. The initial answer key had a discrepancy which has since been reviewed and rectified, and these are the final results.
+        </div>
+        
+        <div class="table-title">Subject-wise Marks</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks Obtained (out of 100)</th>
+                    <th>Class Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject in subjects %}
+                <tr>
+                    <td>{{ subject }}</td>
+                    <td>{{ student_marks[subject] }}</td>
+                    <td>{{ class_averages[subject] }}</td>
+                </tr>
+                {% endfor %}
+                <tr class="total-row">
+                    <td>Total (out of {{ max_total }})</td>
+                    <td>{{ total_marks }}</td>
+                    <td>{{ total_class_average }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="table-title">Performance Comparison</div>
+        <div class="chart-container">
+            <img src="cid:chart_image" alt="Performance Chart" style="max-width: 100%; height: auto;">
+        </div>
+        
+        <div class="footer">
+            <p>For any clarification, please reach out to the coordinator.</p>
+            <p>Regards,<br>Classes</p>
+        </div>
+    </div>
+</body>
+</html>
